@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpiceAura - Admin</title>
+  <style>
+    body{font-family: Arial, sans-serif; max-width:1000px;margin:20px auto;padding:10px}
+    .login, .products, .orders {border:1px solid #ddd;padding:12px;margin-bottom:12px;border-radius:6px}
+    input, button {padding:8px;margin:4px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+  </style>
+</head>
+<body>
+  <h1>Admin - SpiceAura</h1>
+  <div class="login">
+    <h3>Admin Login</h3>
+    <input id="admin-email" placeholder="email"><input id="admin-password" type="password" placeholder="password">
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+    <div id="login-status"></div>
+  </div>
+
+  <div class="products" style="display:none">
+    <h3>Products</h3>
+    <div>
+      <input id="p-name" placeholder="Name"><input id="p-price" placeholder="Price"><input id="p-stock" placeholder="Stock">
+      <button onclick="createProduct()">Create</button>
+    </div>
+    <table id="prod-table"><thead><tr><th>ID</th><th>Name</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <div class="orders" style="display:none">
+    <h3>Orders</h3>
+    <table id="orders-table"><thead><tr><th>ID</th><th>Session</th><th>Email</th><th>Amount</th><th>Status</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <script>
+<script>
+  function setStatus(msg){ document.getElementById('login-status').innerText = msg }
+  function token() { return localStorage.getItem('adminToken') }
+  function refreshToken() { return localStorage.getItem('adminRefresh') }
+
+  async function login() {
+    const email = document.getElementById('admin-email').value;
+    const password = document.getElementById('admin-password').value;
+    const r = await fetch('/api/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email,password})});
+    const j = await r.json();
+    if (j.token) { localStorage.setItem('adminToken', j.token); if (j.refresh) localStorage.setItem('adminRefresh', j.refresh); setStatus('Logged in'); showAdmin(); loadProducts(); loadOrders(); loadUsers(); } else { setStatus('Login failed'); }
+  }
+  function logout(){ localStorage.removeItem('adminToken'); localStorage.removeItem('adminRefresh'); setStatus('Logged out'); document.querySelector('.products').style.display='none'; document.querySelector('.orders').style.display='none'; document.querySelector('.users').style.display='none'; }
+
+  async function ensureToken() {
+    // If token missing or about to expire, attempt to refresh using refresh token
+    const t = token();
+    if (!t && refreshToken()) {
+      const r = await fetch('/api/refresh', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({refresh: refreshToken()})});
+      const j = await r.json();
+      if (j.token) { localStorage.setItem('adminToken', j.token); if (j.refresh) localStorage.setItem('adminRefresh', j.refresh); return true; } else return false;
+    }
+    return !!t;
+  }
+
+  async function showAdmin() {
+    if (!token()) return;
+    document.querySelector('.products').style.display='block';
+    document.querySelector('.orders').style.display='block';
+    document.querySelector('.users').style.display='block';
+  }
+
+  async function loadProducts() {
+    await ensureToken();
+    const r = await fetch('/api/products');
+    const j = await r.json();
+    const tbody = document.querySelector('#prod-table tbody'); tbody.innerHTML='';
+    j.products.forEach(p=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${p.id}</td><td contenteditable data-id="${p.id}" data-field="name">${p.name}</td><td contenteditable data-field="price">${p.price}</td><td contenteditable data-field="stock">${p.stock}</td>
+        <td><button onclick="saveProduct(${p.id})">Save</button> <button onclick="deleteProduct(${p.id})">Delete</button></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function createProduct() {
+    await ensureToken();
+    const name = document.getElementById('p-name').value;
+    const price = parseFloat(document.getElementById('p-price').value) || 0;
+    const stock = parseInt(document.getElementById('p-stock').value) || 0;
+    const r = await fetch('/api/products', {method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()}, body: JSON.stringify({name,price,stock})});
+    const j = await r.json();
+    if (j.id) { loadProducts(); }
+  }
+
+  async function saveProduct(id) {
+    await ensureToken();
+    const row = Array.from(document.querySelectorAll('#prod-table tbody tr')).find(tr => tr.cells[0].innerText == id);
+    const name = row.cells[1].innerText;
+    const price = parseFloat(row.cells[2].innerText)||0;
+    const stock = parseInt(row.cells[3].innerText)||0;
+    const r = await fetch('/api/products/'+id, {method:'PUT', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()}, body: JSON.stringify({name,price,stock})});
+    const j = await r.json();
+    if (j.success) loadProducts();
+  }
+
+  async function deleteProduct(id) {
+    if (!confirm('Delete?')) return;
+    await ensureToken();
+    await fetch('/api/products/'+id, {method:'DELETE', headers:{'Authorization':'Bearer '+token()}});
+    loadProducts();
+  }
+
+  async function loadOrders() {
+    await ensureToken();
+    const r = await fetch('/api/orders', {headers:{'Authorization':'Bearer '+token()}});
+    const j = await r.json();
+    const tbody = document.querySelector('#orders-table tbody'); tbody.innerHTML='';
+    (j.orders||[]).forEach(o=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${o.id}</td><td>${o.stripe_session_id}</td><td>${o.customer_email}</td><td>${o.amount_total}</td><td>${o.status}</td>
+        <td><button onclick="viewOrder(${o.id})">View</button></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function viewOrder(id) {
+    await ensureToken();
+    const r = await fetch('/api/orders/'+id, {headers:{'Authorization':'Bearer '+token()}});
+    const j = await r.json();
+    if (j.order) {
+      const o = j.order;
+      alert('Order '+o.id+'
+Email: '+o.customer_email+'
+Amount: '+o.amount_total+'
+Items: '+o.items);
+    }
+  }
+
+  async function exportCSV() {
+    await ensureToken();
+    window.location = '/api/orders.csv';
+  }
+
+  // Users management
+  async function loadUsers() {
+    await ensureToken();
+    const r = await fetch('/api/users', {headers:{'Authorization':'Bearer '+token()}});
+    const j = await r.json();
+    const tbody = document.querySelector('#users-table tbody'); tbody.innerHTML='';
+    (j.users||[]).forEach(u=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${u.id}</td><td>${u.email}</td><td><select onchange="changeRole(${u.id}, this.value)"><option ${u.role==='user'?'selected':''} value="user">user</option><option ${u.role==='admin'?'selected':''} value="admin">admin</option></select></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function changeRole(id, role) {
+    await ensureToken();
+    await fetch('/api/users/'+id+'/role', {method:'PUT', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()}, body: JSON.stringify({role})});
+    loadUsers();
+  }
+
+  // Auto-show if token present
+  if (token()) { showAdmin(); loadProducts(); loadOrders(); loadUsers(); }
+</script>
+</script>
+</body>
+</html>

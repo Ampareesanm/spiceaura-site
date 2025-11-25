@@ -1,0 +1,20 @@
+{
+  "name": "spiceaura-full-server",
+  "version": "1.1.0",
+  "description": "SpiceAura full example server (sqlite, auth, stripe, sendgrid)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "csv-stringify": "^5.6.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "sqlite3": "^5.1.6",
+    "stripe": "^12.0.0"
+  }
+}

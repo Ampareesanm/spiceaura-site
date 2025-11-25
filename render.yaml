@@ -1,0 +1,21 @@
+# render.yaml for Render deployment
+services:
+  - type: web
+    name: spiceaura
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: DOMAIN
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false

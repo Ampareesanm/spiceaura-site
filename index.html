@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpiceAura – Pure Taste of Tradition</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌶️</text></svg>">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SpiceAura – Pure Taste of Tradition</title><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌶️</text></svg>"><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"><script type="module" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script><style>
         /* Custom Tailwind Configuration */
         tailwind.config = {
             theme: {
@@ -81,115 +71,9 @@
             transform: translateY(-1px);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
-        .product-card:hover .qty-btn {
-            opacity: 1;
-        }
-    </style>
-</head>
-<body class="bg-bg-earth text-text-dark font-body min-h-screen flex flex-col">
-
-    <header id="nav" class="sticky top-0 z-50 bg-bg-earth/95 backdrop-blur-sm shadow-lg transition-all duration-300 border-b border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#home" class="flex-shrink-0 text-2xl font-heading font-bold text-primary-gold transition duration-200">
-                    🌶️ SpiceAura <span class="hidden sm:inline text-base font-body font-normal text-text-dark/80">– Pure Taste of Tradition</span>
-                </a>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#shop" class="nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold text-lg">Shop</a>
-                    <a href="#about" class="nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold text-lg">About Us</a>
-                    <a href="#contact" class="nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold text-lg">Contact</a>
-                    <div id="auth-links-desktop"></div>
-                </nav>
-                <div class="flex items-center space-x-4">
-                    <button id="search-button" class="text-text-dark hover:text-primary-gold transition duration-200 p-3 rounded-full hover:bg-stone-200">
-                        <i data-lucide="search" class="w-5 h-5"></i>
-                    </button>
-                    <a href="#cart" class="relative text-text-dark hover:text-primary-gold transition duration-200 p-3 rounded-full hover:bg-stone-200">
-                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-accent-green text-bg-earth text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full transition-all duration-300 transform scale-0 origin-center shadow-md">0</span>
-                    </a>
-                    <button id="mobile-menu-button" class="md:hidden text-text-dark hover:text-primary-gold transition duration-200 p-3 rounded-full hover:bg-stone-200">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-bg-earth shadow-xl border-t border-stone-200">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-                <a href="#shop" class="mobile-nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold w-full text-center py-3 border-b border-stone-100">Shop</a>
-                <a href="#about" class="mobile-nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold w-full text-center py-3 border-b border-stone-100">About Us</a>
-                <a href="#contact" class="mobile-nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold w-full text-center py-3">Contact</a>
-                <div id="auth-links-mobile" class="w-full"></div>
-            </div>
-        </div>
-    </header>
-
-    <main id="app-content" class="flex-grow"></main>
-
-    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[100] flex items-start justify-center p-4 pt-20 transition-opacity duration-300 opacity-0">
-        <div class="bg-white p-6 w-full max-w-lg rounded-xl shadow-2xl transition-all transform scale-95 border-t-4 border-primary-gold">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-heading font-semibold text-text-dark">Search Spices</h3>
-                <button id="close-search-modal" class="text-text-dark hover:text-primary-orange p-1 rounded-full hover:bg-stone-100">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <input type="text" id="search-input" placeholder="e.g., Turmeric, Cinnamon, Blend..."
-                class="form-input shadow-inner">
-            <div id="search-results" class="mt-4 max-h-60 overflow-y-auto"></div>
-        </div>
-    </div>
-
-    <div id="app-toast" class="fixed bottom-5 right-5 z-[101] p-4 bg-accent-green text-white rounded-lg shadow-2xl transition-all duration-300 opacity-0 translate-y-4 flex items-center space-x-2">
-        <i data-lucide="check" class="w-5 h-5"></i>
-        <span id="toast-message"></span>
-    </div>
-
-    <footer class="bg-text-dark mt-12 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-stone-200">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-xl font-heading font-bold mb-4 text-primary-gold">SpiceAura</h4>
-                    <p class="text-sm text-stone-400">"Crafted with care from Sri Lanka."</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                        <a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                        <a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-lg font-heading font-semibold mb-4 text-white">Quick Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#shop" class="text-stone-400 hover:text-primary-orange transition duration-200">Shop</a></li>
-                        <li><a href="#about" class="text-stone-400 hover:text-primary-orange transition duration-200">Our Story</a></li>
-                        <li><a href="#contact" class="text-stone-400 hover:text-primary-orange transition duration-200">Contact Us</a></li>
-                        <li><a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200">FAQs</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-heading font-semibold mb-4 text-white">Categories</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#shop?category=Powdered" class="text-stone-400 hover:text-primary-orange transition duration-200">Powdered Spices</a></li>
-                        <li><a href="#shop?category=Whole" class="text-stone-400 hover:text-primary-orange transition duration-200">Whole Spices</a></li>
-                        <li><a href="#shop?category=Blends" class="text-stone-400 hover:text-primary-orange transition duration-200">Aura Blends</a></li>
-                    </ul>
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <h4 class="text-lg font-heading font-semibold mb-4 text-white">Newsletter</h4>
-                    <p class="text-sm text-stone-400 mb-3">Subscribe for exclusive discounts & recipes.</p>
-                    <form onsubmit="event.preventDefault(); App.showToast('Thank you for subscribing!'); this.reset();" class="flex flex-col">
-                        <input type="email" placeholder="Your email" required class="p-3 w-full text-text-dark rounded-t-lg border-0 focus:ring-primary-orange focus:border-primary-orange">
-                        <button type="submit" class="mt-0 px-4 py-3 bg-primary-orange text-white font-bold rounded-b-lg hover:bg-primary-gold transition duration-200 whitespace-nowrap shadow-md">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="mt-10 pt-6 border-t border-stone-700 text-center">
-                <p class="text-sm text-stone-500">© 2024 SpiceAura. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
+    </style></head><body class="bg-bg-earth text-text-dark font-body min-h-screen flex flex-col"><header id="nav" class="sticky top-0 z-50 bg-bg-earth/95 backdrop-blur-sm shadow-lg transition-all duration-300 border-b border-stone-200"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="#home" class="flex-shrink-0 text-2xl font-heading font-bold text-primary-gold transition duration-200">
+                    🌶️ SpiceAura <span class="hidden sm:inline text-base font-body font-normal text-text-dark/80">– Pure Taste of Tradition</span></a><nav class="hidden md:flex space-x-8"><a href="#shop" class="nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold text-lg">Shop</a><a href="#about" class="nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold text-lg">About Us</a><a href="#contact" class="nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold text-lg">Contact</a><div id="auth-links-desktop"></div></nav><div class="flex items-center space-x-4"><button id="search-button" class="text-text-dark hover:text-primary-gold transition duration-200 p-3 rounded-full hover:bg-stone-200"><i data-lucide="search" class="w-5 h-5"></i></button><a href="#cart" class="relative text-text-dark hover:text-primary-gold transition duration-200 p-3 rounded-full hover:bg-stone-200"><i data-lucide="shopping-cart" class="w-6 h-6"></i><span id="cart-count" class="absolute -top-1 -right-1 bg-accent-green text-bg-earth text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full transition-all duration-300 transform scale-0 origin-center shadow-md">0</span></a><button id="mobile-menu-button" class="md:hidden text-text-dark hover:text-primary-gold transition duration-200 p-3 rounded-full hover:bg-stone-200"><i data-lucide="menu" class="w-6 h-6"></i></button></div></div></div><div id="mobile-menu" class="hidden md:hidden absolute w-full bg-bg-earth shadow-xl border-t border-stone-200"><div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center"><a href="#shop" class="mobile-nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold w-full text-center py-3 border-b border-stone-100">Shop</a><a href="#about" class="mobile-nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold w-full text-center py-3 border-b border-stone-100">About Us</a><a href="#contact" class="mobile-nav-link text-text-dark hover:text-primary-orange transition duration-200 font-semibold w-full text-center py-3">Contact</a><div id="auth-links-mobile" class="w-full"></div></div></div></header><main id="app-content" class="flex-grow"></main><div id="search-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[100] flex items-start justify-center p-4 pt-20 transition-opacity duration-300 opacity-0"><div class="bg-white p-6 w-full max-w-lg rounded-xl shadow-2xl transition-all transform scale-95 border-t-4 border-primary-gold"><div class="flex justify-between items-center mb-4"><h3 class="text-xl font-heading font-semibold text-text-dark">Search Spices</h3><button id="close-search-modal" class="text-text-dark hover:text-primary-orange p-1 rounded-full hover:bg-stone-100"><i data-lucide="x" class="w-6 h-6"></i></button></div><input type="text" id="search-input" placeholder="e.g., Turmeric, Cinnamon, Blend..."
+                class="form-input shadow-inner"><div id="search-results" class="mt-4 max-h-60 overflow-y-auto"></div></div></div><div id="app-toast" class="fixed bottom-5 right-5 z-[101] p-4 bg-accent-green text-white rounded-lg shadow-2xl transition-all duration-300 opacity-0 translate-y-4 flex items-center space-x-2"><i data-lucide="check" class="w-5 h-5"></i><span id="toast-message"></span></div><footer class="bg-text-dark mt-12 py-10"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-stone-200"><div class="grid grid-cols-2 md:grid-cols-4 gap-8"><div><h4 class="text-xl font-heading font-bold mb-4 text-primary-gold">SpiceAura</h4><p class="text-sm text-stone-400">"Crafted with care from Sri Lanka."</p><div class="flex space-x-4 mt-4"><a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200"><i data-lucide="instagram" class="w-5 h-5"></i></a><a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200"><i data-lucide="facebook" class="w-5 h-5"></i></a><a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200"><i data-lucide="twitter" class="w-5 h-5"></i></a></div></div><div><h4 class="text-lg font-heading font-semibold mb-4 text-white">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="#shop" class="text-stone-400 hover:text-primary-orange transition duration-200">Shop</a></li><li><a href="#about" class="text-stone-400 hover:text-primary-orange transition duration-200">Our Story</a></li><li><a href="#contact" class="text-stone-400 hover:text-primary-orange transition duration-200">Contact Us</a></li><li><a href="#" class="text-stone-400 hover:text-primary-orange transition duration-200">FAQs</a></li></ul></div><div><h4 class="text-lg font-heading font-semibold mb-4 text-white">Categories</h4><ul class="space-y-2 text-sm"><li><a href="#shop?category=Powdered" class="text-stone-400 hover:text-primary-orange transition duration-200">Powdered Spices</a></li><li><a href="#shop?category=Whole" class="text-stone-400 hover:text-primary-orange transition duration-200">Whole Spices</a></li><li><a href="#shop?category=Blends" class="text-stone-400 hover:text-primary-orange transition duration-200">Aura Blends</a></li></ul></div><div class="col-span-2 md:col-span-1"><h4 class="text-lg font-heading font-semibold mb-4 text-white">Newsletter</h4><p class="text-sm text-stone-400 mb-3">Subscribe for exclusive discounts & recipes.</p><form onsubmit="event.preventDefault(); App.showToast('Thank you for subscribing!'); this.reset();" class="flex flex-col"><input type="email" placeholder="Your email" required class="p-3 w-full text-text-dark rounded-t-lg border-0 focus:ring-primary-orange focus:border-primary-orange"><button type="submit" class="mt-0 px-4 py-3 bg-primary-orange text-white font-bold rounded-b-lg hover:bg-primary-gold transition duration-200 whitespace-nowrap shadow-md">Subscribe</button></form></div></div><div class="mt-10 pt-6 border-t border-stone-700 text-center"><p class="text-sm text-stone-500">&copy; 2024 SpiceAura. All rights reserved.</p></div></div></footer><script>
         const App = {
             // --- DATA LAYER (Simulating Global State) ---
             appContent: null,
@@ -318,19 +202,15 @@
                     return { success: App.PRODUCTS.length < initialLength };
                 },
 
-                // Order Endpoint (Payment Gateway Mock) - UPDATED FOR EMAIL CONCEPT
+                // Order Endpoint (Payment Gateway Mock)
                 async placeOrder(orderData) {
                     await this.delay(1500); // Simulate payment processing delay
-                    
-                    const ADMIN_EMAIL = 'orders@spiceaura.com'; 
-                    const CUSTOMER_EMAIL = orderData.customer.email; 
-
                     // === NOTE: This is a MOCK implementation. ===
-                    // In a REAL application, your server would securely send emails here.
-                    console.log(`[SERVER MOCK] Sending Order Confirmation to customer: ${CUSTOMER_EMAIL}`);
-                    console.log(`[SERVER MOCK] Sending Admin Notification to: ${ADMIN_EMAIL}`);
-                    // ===============================================
-
+                    // Replace this function to call your server-side payment endpoint (Stripe/PayPal/etc.).
+                    // Example flow (recommended):
+                    // 1. POST /create-checkout-session on your server with orderData
+                    // 2. Server creates a Checkout Session with Stripe (or creates an order with PayPal) and returns sessionId
+                    // 3. Client redirects to the payment provider for real payment.
                     console.log('Order Placed (Mock):', orderData);
                     return { success: true, orderId: 'SA-' + Date.now().toString().slice(-6) };
                 }
@@ -493,34 +373,6 @@
                     this.renderHome();
                 }
             },
-            
-            // --- Helper to create a unified product card (used by Home and Shop) - UPDATED DESIGN ---
-            createProductCard(product) {
-                return `
-                    <div class="product-card bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-stone-100 flex flex-col justify-between transform hover:scale-[1.02] animate-popIn">
-                        <a href="#product-${product.id}" class="block">
-                            <div class="relative mb-4 overflow-hidden rounded-xl h-60 bg-stone-100">
-                                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                                ${product.bestSeller ? '<span class="absolute top-2 left-2 bg-primary-gold text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">BEST SELLER</span>' : ''}
-                            </div>
-                            <h3 class="text-xl font-heading font-bold text-text-dark hover:text-primary-orange transition duration-200">${product.name}</h3>
-                            <p class="text-sm text-stone-500 mt-1">${product.category}</p>
-                            <div class="flex items-center mt-3">
-                                <span class="text-yellow-500 text-lg">${'★'.repeat(Math.round(product.rating))}</span>
-                                <span class="text-stone-300 text-lg">${'☆'.repeat(5 - Math.round(product.rating))}</span>
-                                <span class="ml-2 text-stone-600 text-sm">(${product.rating.toFixed(1)})</span>
-                            </div>
-                        </a>
-                        <div class="flex items-center justify-between mt-4 border-t pt-4 border-stone-100">
-                            <span class="text-2xl font-extrabold text-primary-gold">$${product.price.toFixed(2)}</span>
-                            <button data-action="add-to-cart" data-product-id="${product.id}" class="px-4 py-2 text-sm bg-accent-green text-white font-bold rounded-full hover:bg-primary-gold transition duration-200 shadow-md flex items-center space-x-1">
-                                <i data-lucide="plus" class="w-4 h-4"></i>
-                                <span>Add</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            },
 
             // --- 8. LOGIN PAGE (New for Backend Auth) ---
             renderLogin() {
@@ -553,22 +405,8 @@
                 };
 
                 const html = `
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                        <div class="max-w-md mx-auto bg-white p-10 rounded-3xl shadow-2xl border-t-8 border-primary-orange">
-                            <h1 class="text-3xl font-heading font-extrabold text-center text-text-dark mb-8">Customer Login</h1>
-                            <p class="text-center text-sm text-stone-500 mb-6">Use admin@spiceaura.com/admin or user@spiceaura.com/user to test roles.</p>
-                            <form id="login-form" class="space-y-5">
-                                <input type="email" id="login-email" placeholder="Email Address" required class="form-input">
-                                <input type="password" id="login-password" placeholder="Password" required class="form-input">
-                                <button type="submit" id="login-btn" class="w-full py-3 text-xl primary-btn flex items-center justify-center space-x-2">
-                                    <i data-lucide="log-in" class="w-6 h-6"></i><span>Log In</span>
-                                </button>
-                            </form>
-                            <p class="mt-6 text-center text-sm text-stone-600">
-                                New Customer? <a href="#register" class="text-primary-orange hover:text-primary-gold font-semibold">Create an Account (Mock)</a>
-                            </p>
-                        </div>
-                    </div>
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20"><div class="max-w-md mx-auto bg-white p-10 rounded-3xl shadow-2xl border-t-8 border-primary-orange"><h1 class="text-3xl font-heading font-extrabold text-center text-text-dark mb-8">Customer Login</h1><p class="text-center text-sm text-stone-500 mb-6">Use admin@spiceaura.com/admin or user@spiceaura.com/user to test roles.</p><form id="login-form" class="space-y-5"><input type="email" id="login-email" placeholder="Email Address" required class="form-input"><input type="password" id="login-password" placeholder="Password" required class="form-input"><button type="submit" id="login-btn" class="w-full py-3 text-xl primary-btn flex items-center justify-center space-x-2"><i data-lucide="log-in" class="w-6 h-6"></i><span>Log In</span></button></form><p class="mt-6 text-center text-sm text-stone-600">
+                                New Customer? <a href="#register" class="text-primary-orange hover:text-primary-gold font-semibold">Create an Account (Mock)</a></p></div></div>
                 `;
                 this.renderPage(html, () => {
                     document.getElementById('login-form').addEventListener('submit', handleLogin);
@@ -585,49 +423,13 @@
                 const products = App.PRODUCTS;
 
                 const productRows = products.map(p => `
-                    <tr class="border-b border-stone-200 hover:bg-stone-50 transition duration-150">
-                        <td class="p-3 text-sm font-semibold text-text-dark">${p.id.slice(-4)}</td>
-                        <td class="p-3 text-sm text-stone-700">${p.name}</td>
-                        <td class="p-3 text-sm text-stone-700">$${p.price.toFixed(2)}</td>
-                        <td class="p-3 text-sm text-stone-700">${p.category}</td>
-                        <td class="p-3 text-sm text-stone-700">
-                            <button data-action="edit-product" data-id="${p.id}" class="text-primary-orange hover:text-primary-gold transition duration-150 mr-3">
-                                <i data-lucide="edit" class="w-4 h-4 inline"></i> Edit
-                            </button>
-                            <button data-action="delete-product" data-id="${p.id}" class="text-red-500 hover:text-red-700 transition duration-150">
-                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i> Delete
-                            </button>
-                        </td>
-                    </tr>
+                    <tr class="border-b border-stone-200 hover:bg-stone-50 transition duration-150"><td class="p-3 text-sm font-semibold text-text-dark">${p.id.slice(-4)}</td><td class="p-3 text-sm text-stone-700">${p.name}</td><td class="p-3 text-sm text-stone-700">$${p.price.toFixed(2)}</td><td class="p-3 text-sm text-stone-700">${p.category}</td><td class="p-3 text-sm text-stone-700"><button data-action="edit-product" data-id="${p.id}" class="text-primary-orange hover:text-primary-gold transition duration-150 mr-3"><i data-lucide="edit" class="w-4 h-4 inline"></i> Edit</button><button data-action="delete-product" data-id="${p.id}" class="text-red-500 hover:text-red-700 transition duration-150"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Delete</button></td></tr>
                 `).join('');
 
                 const html = `
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                        <div class="flex justify-between items-center mb-10 border-b pb-4 border-red-300">
-                            <h1 class="text-4xl font-heading font-extrabold text-red-600">Admin Dashboard</h1>
-                            <button data-action="new-product" class="py-2 px-5 bg-accent-green text-white font-bold rounded-lg hover:bg-primary-gold transition duration-200 shadow-md flex items-center space-x-2">
-                                <i data-lucide="plus-circle" class="w-5 h-5"></i><span>Add New Spice</span>
-                            </button>
-                        </div>
-                        <div id="admin-form-area" class="bg-white p-8 rounded-2xl shadow-xl border border-stone-100 mb-10 hidden"></div>
-                        <div class="bg-white p-8 rounded-2xl shadow-xl border border-stone-100 overflow-x-auto">
-                            <h2 class="text-2xl font-heading font-bold text-text-dark mb-6">Product Management (${products.length} Items)</h2>
-                            <table class="min-w-full divide-y divide-stone-200">
-                                <thead>
-                                    <tr class="bg-stone-50">
-                                        <th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">ID</th>
-                                        <th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Name</th>
-                                        <th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Price</th>
-                                        <th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Category</th>
-                                        <th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="product-list-body" class="bg-white divide-y divide-stone-200">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><div class="flex justify-between items-center mb-10 border-b pb-4 border-red-300"><h1 class="text-4xl font-heading font-extrabold text-red-600">Admin Dashboard</h1><button data-action="new-product" class="py-2 px-5 bg-accent-green text-white font-bold rounded-lg hover:bg-primary-gold transition duration-200 shadow-md flex items-center space-x-2"><i data-lucide="plus-circle" class="w-5 h-5"></i><span>Add New Spice</span></button></div><div id="admin-form-area" class="bg-white p-8 rounded-2xl shadow-xl border border-stone-100 mb-10 hidden"></div><div class="bg-white p-8 rounded-2xl shadow-xl border border-stone-100 overflow-x-auto"><h2 class="text-2xl font-heading font-bold text-text-dark mb-6">Product Management (${products.length} Items)</h2><table class="min-w-full divide-y divide-stone-200"><thead><tr class="bg-stone-50"><th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">ID</th><th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Name</th><th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Price</th><th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Category</th><th class="p-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Actions</th></tr></thead><tbody id="product-list-body" class="bg-white divide-y divide-stone-200">
                                     ${productRows}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                </tbody></table></div></div>
                 `;
                 this.renderPage(html, this.setupAdminListeners.bind(this));
             },
@@ -702,90 +504,32 @@
                 const data = product || defaultProduct;
 
                 formArea.innerHTML = `
-                    <h2 class="text-2xl font-heading font-bold text-text-dark mb-6">${isEdit ? `Edit Spice: ${data.name}` : 'Add New Spice'}</h2>
-                    <form id="product-form" data-product-id="${data.id || ''}" class="space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div><label class="block text-sm font-semibold mb-1">Name</label><input type="text" name="name" class="form-input" value="${data.name}" required></div>
-                            <div><label class="block text-sm font-semibold mb-1">Price</label><input type="number" name="price" class="form-input" step="0.01" value="${data.price.toFixed(2)}" required></div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-semibold mb-1">Category</label>
-                                <select name="category" class="form-input" required>
+                    <h2 class="text-2xl font-heading font-bold text-text-dark mb-6">${isEdit ? `Edit Spice: ${data.name}` : 'Add New Spice'}</h2><form id="product-form" data-product-id="${data.id || ''}" class="space-y-4"><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-1">Name</label><input type="text" name="name" class="form-input" value="${data.name}" required></div><div><label class="block text-sm font-semibold mb-1">Price</label><input type="number" name="price" class="form-input" step="0.01" value="${data.price.toFixed(2)}" required></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-1">Category</label><select name="category" class="form-input" required>
                                     ${['Powdered', 'Whole', 'Blends'].map(c => `<option value="${c}" ${data.category === c ? 'selected' : ''}>${c}</option>`).join('')}
-                                </select>
-                            </div>
-                            <div><label class="block text-sm font-semibold mb-1">Rating (1.0 - 5.0)</label><input type="number" name="rating" class="form-input" step="0.1" min="1" max="5" value="${data.rating}" required></div>
-                        </div>
-                        <div><label class="block text-sm font-semibold mb-1">Image URL (Use placeholder.co)</label><input type="text" name="image" class="form-input" value="${data.image}" required></div>
-                        <div><label class="block text-sm font-semibold mb-1">Weight Options (Comma Separated, e.g., 50g, 100g)</label><input type="text" name="weightOptions" class="form-input" value="${data.weightOptions.join(', ')}" required></div>
-                        <div><label class="block text-sm font-semibold mb-1">Description</label><textarea name="description" rows="3" class="form-input" required>${data.description}</textarea></div>
-                        <div class="flex items-center space-x-2">
-                            <input type="checkbox" name="bestSeller" id="bestSeller" class="h-4 w-4 text-primary-orange border-gray-300 rounded" ${data.bestSeller ? 'checked' : ''}>
-                            <label for="bestSeller" class="text-sm font-semibold">Best Seller</label>
-                        </div>
-                        <div class="flex justify-end space-x-4 pt-4">
-                            <button type="button" data-action="cancel-form" class="py-2 px-4 bg-stone-200 text-text-dark font-bold rounded-lg hover:bg-stone-300 transition duration-200">Cancel</button>
-                            <button type="submit" class="py-2 px-4 bg-primary-orange text-white font-bold rounded-lg hover:bg-primary-gold transition duration-200 shadow-md">
+                                </select></div><div><label class="block text-sm font-semibold mb-1">Rating (1.0 - 5.0)</label><input type="number" name="rating" class="form-input" step="0.1" min="1" max="5" value="${data.rating}" required></div></div><div><label class="block text-sm font-semibold mb-1">Image URL (Use placeholder.co)</label><input type="text" name="image" class="form-input" value="${data.image}" required></div><div><label class="block text-sm font-semibold mb-1">Weight Options (Comma Separated, e.g., 50g, 100g)</label><input type="text" name="weightOptions" class="form-input" value="${data.weightOptions.join(', ')}" required></div><div><label class="block text-sm font-semibold mb-1">Description</label><textarea name="description" rows="3" class="form-input" required>${data.description}</textarea></div><div class="flex items-center space-x-2"><input type="checkbox" name="bestSeller" id="bestSeller" class="h-4 w-4 text-primary-orange border-gray-300 rounded" ${data.bestSeller ? 'checked' : ''}><label for="bestSeller" class="text-sm font-semibold">Best Seller</label></div><div class="flex justify-end space-x-4 pt-4"><button type="button" data-action="cancel-form" class="py-2 px-4 bg-stone-200 text-text-dark font-bold rounded-lg hover:bg-stone-300 transition duration-200">Cancel</button><button type="submit" class="py-2 px-4 bg-primary-orange text-white font-bold rounded-lg hover:bg-primary-gold transition duration-200 shadow-md">
                                 ${isEdit ? 'Save Changes' : 'Create Product'}
-                            </button>
-                        </div>
-                    </form>
+                            </button></div></form>
                 `;
                 this.renderIcons();
             },
 
 
-            // 1. Home Page - UPDATED DESIGN
+            // 1. Home Page
             renderHome() {
                 const bestSellers = App.PRODUCTS.filter(p => p.bestSeller).slice(0, 4);
                 const html = `
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                        <section class="relative h-[65vh] md:h-[80vh] bg-cover bg-center rounded-3xl shadow-2xl overflow-hidden"
-                                style="background-image: url('https://placehold.co/1200x800/A17D49/ffffff?text=Rich+Spice+Texture'); background-blend-mode: multiply;">
-                            <div class="absolute inset-0 bg-text-dark/50 backdrop-blur-[1px]"></div>
-                            <div class="relative flex flex-col items-center justify-center h-full text-center text-white p-6">
-                                <div class="max-w-4xl mx-auto">
-                                    <h1 class="text-5xl sm:text-7xl font-heading font-extrabold leading-none tracking-tighter drop-shadow-2xl animate-fadeIn">
-                                        SpiceAura: The **Authentic** Taste of Sri Lanka
-                                    </h1>
-                                    <p class="mt-6 text-xl sm:text-2xl font-body font-light max-w-3xl mx-auto drop-shadow-lg animate-fadeIn" style="animation-delay: 0.2s;">
-                                        Single-origin, ethically sourced, and packed with the purest aroma of tradition.
-                                    </p>
-                                    <a href="#shop" class="mt-10 px-12 py-5 bg-primary-orange text-white font-bold text-xl rounded-full shadow-2xl hover:bg-primary-gold transition duration-300 transform hover:scale-105 animate-fadeIn" style="animation-delay: 0.4s;">
-                                        Discover the Collection
-                                    </a>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="mt-20">
-                            <h2 class="text-3xl font-heading font-bold text-center text-text-dark mb-12 border-b-2 border-primary-orange/50 pb-4 inline-block mx-auto">🔥 Best Sellers</h2>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><section class="relative h-[60vh] md:h-[70vh] bg-cover bg-center rounded-3xl shadow-2xl overflow-hidden group"
+                            style="background-image: url('https://placehold.co/1200x600/6D4C3D/ffffff?text=Premium+Spices+Background');"><div class="absolute inset-0 bg-text-dark/40 group-hover:bg-text-dark/50 transition-all duration-500"></div><div class="relative flex flex-col items-center justify-center h-full text-center text-white p-6"><h1 class="text-4xl sm:text-6xl font-heading font-extrabold leading-tight tracking-tight drop-shadow-lg animate-fadeIn">
+                                    The Purest Aromas of the East
+                                </h1><p class="mt-4 text-lg sm:text-xl font-body max-w-2xl drop-shadow-md animate-fadeIn" style="animation-delay: 0.2s;">
+                                    Discover the richness of tradition with spices sourced directly from Sri Lanka's finest harvests.
+                                </p><a href="#shop" class="mt-8 px-10 py-4 bg-primary-gold text-white font-bold text-lg rounded-full shadow-xl hover:bg-primary-orange transition duration-300 transform hover:scale-105 animate-fadeIn" style="animation-delay: 0.4s;">
+                                    Shop Now &rarr;
+                                </a></div></section><section class="mt-20"><h2 class="text-3xl font-heading font-bold text-center text-text-dark mb-12 border-b-2 border-primary-orange/50 pb-4 inline-block mx-auto">🔥 Best Sellers</h2><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                                 ${bestSellers.map(this.createProductCard).join('')}
-                            </div>
-                            <div class="text-center mt-12">
-                                <a href="#shop" class="text-primary-orange hover:text-primary-gold font-semibold text-lg flex items-center justify-center space-x-2 p-3 rounded-lg hover:bg-stone-100 transition duration-200">
-                                    <span>View All Spices</span><i data-lucide="arrow-right" class="w-5 h-5"></i>
-                                </a>
-                            </div>
-                        </section>
-
-                        <section class="mt-24 bg-white p-10 rounded-3xl shadow-xl border border-primary-gold/20 flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
-                            <div class="lg:w-1/2">
-                                <h3 class="text-3xl font-heading font-bold text-text-dark mb-4 border-l-4 border-accent-green pl-3">Our Heritage of Purity</h3>
-                                <p class="text-lg text-stone-700 mb-6">
+                            </div><div class="text-center mt-12"><a href="#shop" class="text-primary-orange hover:text-primary-gold font-semibold text-lg flex items-center justify-center space-x-2 p-3 rounded-lg hover:bg-stone-100 transition duration-200"><span>View All Spices</span><i data-lucide="arrow-right" class="w-5 h-5"></i></a></div></section><section class="mt-24 bg-white p-10 rounded-3xl shadow-xl border border-primary-gold/20 flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12"><div class="lg:w-1/2"><h3 class="text-3xl font-heading font-bold text-text-dark mb-4 border-l-4 border-accent-green pl-3">Our Heritage of Purity</h3><p class="text-lg text-stone-700 mb-6">
                                     At SpiceAura, we believe the best flavor comes from the source. We work directly with small, ethical farms in Sri Lanka to bring you single-origin, unadulterated spices. It's more than a spice; it's a legacy.
-                                </p>
-                                <a href="#about" class="inline-flex items-center space-x-2 text-primary-orange hover:text-primary-gold font-semibold">
-                                    <span>Read Our Full Story</span><i data-lucide="chevron-right" class="w-5 h-5"></i>
-                                </a>
-                            </div>
-                            <div class="lg:w-1/2">
-                                <img src="https://placehold.co/600x400/059669/ffffff?text=Sri+Lankan+Spice+Farm" alt="Spice Farm" class="rounded-2xl w-full object-cover shadow-xl">
-                            </div>
-                        </section>
-                    </div>
+                                </p><a href="#about" class="inline-flex items-center space-x-2 text-primary-orange hover:text-primary-gold font-semibold"><span>Read Our Full Story</span><i data-lucide="chevron-right" class="w-5 h-5"></i></a></div><div class="lg:w-1/2"><img src="https://placehold.co/600x400/059669/ffffff?text=Sri+Lankan+Spice+Farm" alt="Spice Farm" class="rounded-2xl w-full object-cover shadow-xl"></div></section></div>
                 `;
                 this.renderPage(html);
             },
@@ -810,13 +554,7 @@
                 const categories = ['All', 'Powdered', 'Whole', 'Blends'];
 
                 const html = `
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                        <h1 class="text-4xl font-heading font-extrabold text-center text-text-dark mb-4">Our Spice Collection</h1>
-                        <p class="text-center text-lg text-stone-600 mb-10">A curated selection of the world's finest, pure spices.</p>
-
-                        <div class="flex flex-col md:flex-row justify-between items-center bg-white p-6 rounded-xl shadow-lg border border-stone-100 mb-10 space-y-4 md:space-y-0">
-                            <div class="flex flex-wrap gap-2 items-center">
-                                <span class="text-md font-semibold text-text-dark mr-2">Category Filter:</span>
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><h1 class="text-4xl font-heading font-extrabold text-center text-text-dark mb-4">Our Spice Collection</h1><p class="text-center text-lg text-stone-600 mb-10">A curated selection of the world's finest, pure spices.</p><div class="flex flex-col md:flex-row justify-between items-center bg-white p-6 rounded-xl shadow-lg border border-stone-100 mb-10 space-y-4 md:space-y-0"><div class="flex flex-wrap gap-2 items-center"><span class="text-md font-semibold text-text-dark mr-2">Category Filter:</span>
                                 ${categories.map(cat => `
                                     <a href="#shop?category=${cat}&sort=${sortType}"
                                        class="text-sm px-4 py-2 rounded-full font-semibold transition duration-200 border
@@ -824,24 +562,368 @@
                                         ${cat}
                                     </a>
                                 `).join('')}
-                            </div>
-                            <div class="flex items-center space-x-2 w-full md:w-auto">
-                                <label for="sort-select" class="text-md font-semibold text-text-dark whitespace-nowrap">Sort By:</label>
-                                <select id="sort-select" onchange="window.location.hash = '#shop?category=${activeCategory}&sort=' + this.value"
-                                    class="p-2 border-2 border-primary-gold/50 rounded-lg text-sm bg-bg-earth focus:border-primary-orange">
-                                    <option value="rating">Top Rated</option>
-                                    <option value="price-asc">Price: Low to High</option>
-                                    <option value="price-desc">Price: High to Low</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            </div><div class="flex items-center space-x-2 w-full md:w-auto"><label for="sort-select" class="text-md font-semibold text-text-dark whitespace-nowrap">Sort By:</label><select id="sort-select" onchange="window.location.hash = '#shop?category=${activeCategory}&sort=' + this.value"
+                                    class="p-2 border-2 border-primary-gold/50 rounded-lg text-sm bg-bg-earth focus:border-primary-orange"><option value="rating">Top Rated</option><option value="price-asc">Price: Low to High</option><option value="price-desc">Price: High to Low</option></select></div></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                             ${filteredProducts.length > 0 ?
                                 filteredProducts.map(this.createProductCard).join('') :
                                 '<div class="col-span-full text-center py-10 text-xl text-stone-500">No spices found matching your criteria.</div>'
                             }
-                        </div>
+                        </div></div>
+                `;
+                this.renderPage(html, () => {
+                    document.getElementById('sort-select').value = sortType;
+                });
+            },
+
+            // 3. Product Detail Page
+            renderProductDetail(id) {
+                const product = this.getProductById(id);
+                if (!product) {
+                    return this.renderPage('<div class="container mx-auto px-4 py-20 text-center"><h1 class="text-3xl font-heading text-red-600">Spice Not Found</h1><p class="mt-4">The requested product does not exist.</p><a href="#shop" class="mt-6 inline-block text-primary-orange font-semibold">Back to Shop</a></div>');
+                }
+
+                const setupDetailListeners = () => {
+                    const qtyInput = document.getElementById('quantity-input');
+                    const minusBtn = document.getElementById('minus-qty');
+                    const plusBtn = document.getElementById('plus-qty');
+                    const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+                    minusBtn.addEventListener('click', () => {
+                        qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
+                    });
+                    plusBtn.addEventListener('click', () => {
+                        qtyInput.value = parseInt(qtyInput.value) + 1;
+                    });
+                    qtyInput.addEventListener('change', () => {
+                        if (parseInt(qtyInput.value) < 1 || isNaN(parseInt(qtyInput.value))) {
+                            qtyInput.value = 1;
+                        }
+                    });
+
+                    addToCartBtn.addEventListener('click', (e) => {
+                        const id = e.currentTarget.dataset.productId;
+                        const qty = parseInt(qtyInput.value);
+                        const weight = document.getElementById('weight-select').value;
+                        if (qty > 0) {
+                            this.addToCart(id, qty, weight);
+                        }
+                    });
+                };
+
+                const html = `
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><div class="flex flex-col lg:flex-row gap-12 bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-stone-100"><div class="lg:w-1/2"><img src="${product.image}" alt="${product.name}" class="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-xl bg-stone-100 border border-stone-200"></div><div class="lg:w-1/2"><span class="text-md font-semibold uppercase text-accent-green tracking-widest">${product.category}</span><h1 class="text-4xl font-heading font-extrabold text-text-dark mt-2">${product.name}</h1><p class="text-4xl font-bold text-primary-gold mt-4">$${product.price.toFixed(2)}</p><div class="flex items-center mt-3 pb-6 border-b border-stone-200"><span class="text-yellow-500 text-xl">${'★'.repeat(Math.round(product.rating))}</span><span class="text-stone-300 text-xl">${'☆'.repeat(5 - Math.round(product.rating))}</span><span class="ml-3 text-stone-600 font-semibold text-sm">(${product.rating.toFixed(1)} Rating)</span></div><p class="mt-6 text-lg text-stone-700 leading-relaxed">${product.description}</p><div class="mt-8 space-y-6"><div><label for="weight-select" class="block text-sm font-semibold text-text-dark mb-2">Weight Option</label><select id="weight-select" class="form-input w-full max-w-xs border-2 border-stone-300">
+                                            ${product.weightOptions.map(w => `<option value="${w}">${w}</option>`).join('')}
+                                        </select></div><div><label for="quantity-input" class="block text-sm font-semibold text-text-dark mb-2">Quantity</label><div class="flex items-center max-w-xs border border-stone-300 rounded-lg shadow-sm bg-white"><button id="minus-qty" class="qty-btn bg-stone-100 hover:bg-stone-200 p-3 rounded-l-lg transition duration-150"><i data-lucide="minus" class="w-4 h-4 text-text-dark"></i></button><input type="number" id="quantity-input" value="1" min="1" class="w-16 text-center p-2 font-bold text-lg focus:outline-none border-0 bg-transparent"><button id="plus-qty" class="qty-btn bg-stone-100 hover:bg-stone-200 p-3 rounded-r-lg transition duration-150"><i data-lucide="plus" class="w-4 h-4 text-text-dark"></i></button></div></div></div><button id="add-to-cart-btn" data-product-id="${product.id}"
+                                    class="mt-10 w-full py-4 text-xl primary-btn flex items-center justify-center space-x-3"><i data-lucide="shopping-cart" class="w-6 h-6"></i><span>Add to Cart</span></button></div></div></div>
+                `;
+                this.renderPage(html, setupDetailListeners);
+            },
+
+            // 4. Cart Page
+            renderCart() {
+                const total = this.getCartTotal();
+
+                const cartItemsHtml = this.cart.map(item => `
+                    <div class="flex flex-col sm:flex-row items-center justify-between border-b border-stone-200 py-5 last:border-b-0 bg-white p-6 rounded-xl shadow-md transition-shadow hover:shadow-lg"><div class="flex items-center space-x-4 sm:w-1/2"><img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg bg-stone-100 hidden sm:block"><div><p class="font-semibold text-xl text-text-dark">${item.name}</p><p class="text-sm text-stone-500">${item.weight} | $${item.price.toFixed(2)} / unit</p></div></div><div class="flex items-center space-x-6 mt-4 sm:mt-0"><div class="flex items-center border border-stone-300 rounded-lg shadow-sm bg-stone-50"><button data-cart-action="decrease" data-product-id="${item.id}" data-weight="${item.weight}" class="qty-btn p-2 hover:bg-stone-200 rounded-l-lg transition duration-150"><i data-lucide="minus" class="w-4 h-4"></i></button><span class="p-2 font-bold text-md w-8 text-center">${item.quantity}</span><button data-cart-action="increase" data-product-id="${item.id}" data-weight="${item.weight}" class="qty-btn p-2 hover:bg-stone-200 rounded-r-lg transition duration-150"><i data-lucide="plus" class="w-4 h-4"></i></button></div><p class="font-extrabold text-xl text-primary-gold w-24 text-right hidden sm:block">$${(item.price * item.quantity).toFixed(2)}</p><button data-cart-action="remove" data-product-id="${item.id}" data-weight="${item.weight}" class="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 transition duration-200" title="Remove Item"><i data-lucide="x" class="w-5 h-5"></i></button></div></div>
+                `).join('');
+
+                const emptyCartHtml = `
+                    <div class="text-center py-16 bg-white p-10 rounded-2xl shadow-xl border border-stone-100"><i data-lucide="shopping-cart" class="w-20 h-20 mx-auto text-primary-orange mb-6 stroke-1.5"></i><h2 class="text-2xl font-heading font-semibold text-text-dark">Your cart is empty!</h2><p class="mt-3 text-stone-600">Time to fill it with some amazing spices.</p><a href="#shop" class="mt-8 inline-block px-8 py-3 bg-primary-orange text-white font-bold rounded-lg hover:bg-primary-gold transition duration-200 shadow-md">
+                            Start Shopping
+                        </a></div>
+                `;
+
+                const html = `
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><h1 class="text-4xl font-heading font-extrabold text-center text-text-dark mb-10 border-b-2 border-primary-orange/50 pb-4 inline-block mx-auto">Your Shopping Cart</h1>
+
+                        ${this.cart.length > 0 ? `
+                            <div class="lg:flex lg:space-x-8"><div id="cart-items-list" class="lg:w-3/4 space-y-4">
+                                    ${cartItemsHtml}
+                                    <a href="#shop" class="mt-6 inline-flex items-center space-x-2 text-primary-orange hover:text-primary-gold font-semibold p-2 rounded-lg hover:bg-stone-100 transition duration-200"><i data-lucide="chevron-left" class="w-5 h-5"></i><span>Continue Shopping</span></a></div><div class="lg:w-1/4 mt-8 lg:mt-0 bg-white p-6 rounded-2xl shadow-xl border border-primary-gold/20 h-fit"><h2 class="text-2xl font-heading font-bold text-text-dark mb-4 border-b pb-3">Order Summary</h2><div class="space-y-3 text-stone-700"><div class="flex justify-between"><span>Subtotal:</span><span class="font-semibold">$${total.toFixed(2)}</span></div><div class="flex justify-between"><span>Shipping:</span><span class="font-semibold text-accent-green">FREE</span></div></div><div class="flex justify-between font-extrabold text-xl text-text-dark pt-4 mt-4 border-t border-stone-300"><span>Total:</span><span>$${total.toFixed(2)}</span></div><a href="#checkout" class="mt-6 w-full py-3 block text-center bg-primary-orange text-white font-bold text-lg rounded-lg shadow-lg hover:bg-primary-gold transition duration-300">
+                                        Proceed to Checkout
+                                    </a></div></div>
+                        ` : emptyCartHtml}
                     </div>
                 `;
-                this.
+                this.renderPage(html, this.setupCartListeners.bind(this));
+            },
+
+            // 5. Checkout Page (Updated to simulate payment/API call)
+            renderCheckout() {
+                if (this.cart.length === 0) {
+                    return window.location.hash = '#cart';
+                }
+                const total = this.getCartTotal();
+
+                const handleCheckout = async (event) => {
+                    event.preventDefault();
+                    const form = event.target;
+                    const name = form['shipping-name'].value;
+                    const email = form['shipping-email'].value;
+                    const placeOrderBtn = document.getElementById('place-order-btn');
+                    const originalText = placeOrderBtn.innerHTML;
+
+                    if (!name || !email) {
+                        return this.showToast('Please fill in Name and Email fields.');
+                    }
+
+                    placeOrderBtn.innerHTML = `<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> Processing Payment.....`;
+                    placeOrderBtn.disabled = true;
+                    this.renderIcons();
+
+                    const orderData = {
+                        customer: this.Auth.user || { name, email },
+                        shipping: { name, email, address: form['shipping-address'].value },
+                        items: this.cart,
+                        total: total.toFixed(2),
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    const result = await this.API.placeOrder(orderData);
+
+                    if (result.success) {
+                        this.cart = [];
+                        this.saveCart();
+                        window.location.hash = `#order-confirmed?orderId=${result.orderId}`;
+                    } else {
+                        this.showToast('Payment failed. Please try again.');
+                        placeOrderBtn.innerHTML = originalText;
+                        placeOrderBtn.disabled = false;
+                        this.renderIcons();
+                    }
+                };
+
+                const html = `
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><h1 class="text-4xl font-heading font-extrabold text-center text-text-dark mb-10 border-b-2 border-primary-orange/50 pb-4 inline-block mx-auto">Secure Checkout</h1><div class="max-w-4xl mx-auto flex flex-col lg:flex-row gap-8"><div class="lg:w-2/3 bg-white p-8 rounded-2xl shadow-xl border border-stone-100"><h2 class="text-2xl font-heading font-bold text-text-dark mb-6 border-b pb-3">Shipping & Payment</h2><form id="checkout-form" class="space-y-5"><h3 class="text-xl font-semibold text-primary-orange mb-3">Shipping Information</h3><input type="text" id="shipping-name" name="shipping-name" placeholder="Full Name" required class="form-input" value="${this.Auth.user ? this.Auth.user.name : 'Aura Customer'}"><input type="email" id="shipping-email" name="shipping-email" placeholder="Email Address" required class="form-input" value="${this.Auth.user ? this.Auth.user.email : 'test@example.com'}"><input type="text" id="shipping-address" name="shipping-address" placeholder="Address Line 1" required class="form-input" value="123 Spice Lane"><div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><input type="text" placeholder="City" required class="form-input" value="Colombo"><input type="text" placeholder="State/Province" required class="form-input" value="Western"><input type="text" placeholder="Zip/Postal Code" required class="form-input" value="00100"></div><h3 class="text-xl font-semibold text-primary-orange pt-4 border-t mt-6">Payment Gateway (Mock)</h3><input type="text" placeholder="Card Number (XXXX-XXXX-XXXX-XXXX)" required class="form-input" value="4111-XXXX-XXXX-4111"><div class="grid grid-cols-2 gap-4"><input type="text" placeholder="MM/YY" required class="form-input" value="12/26"><input type="text" placeholder="CVV" required class="form-input" value="123"></div><button type="submit" id="place-order-btn" class="w-full py-4 text-xl primary-btn mt-8">
+                                        Place Order - $${total.toFixed(2)}
+                                    </button></form></div><div class="lg:w-1/3 bg-stone-50 p-6 rounded-2xl shadow-lg border border-stone-200 h-fit"><h2 class="text-2xl font-heading font-bold text-text-dark mb-4 border-b pb-3">Your Order</h2><ul class="space-y-3 text-stone-700 max-h-60 overflow-y-auto">
+                                    ${this.cart.map(item => `
+                                        <li class="flex justify-between text-md"><span>${item.quantity}x ${item.name} (${item.weight})</span><span>$${(item.price * item.quantity).toFixed(2)}</span></li>
+                                    `).join('')}
+                                </ul><div class="flex justify-between font-extrabold text-xl text-text-dark pt-4 mt-4 border-t border-stone-300"><span>Total:</span><span>$${total.toFixed(2)}</span></div></div></div></div>
+                `;
+                this.renderPage(html, () => {
+                    document.getElementById('checkout-form').addEventListener('submit', handleCheckout);
+                });
+            },
+
+            // 5b. Order Confirmed Page (Updated to show Order ID)
+            renderOrderConfirmed(orderId) {
+                const html = `
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"><div class="max-w-2xl mx-auto bg-white p-12 rounded-3xl shadow-2xl border-t-8 border-accent-green"><i data-lucide="check-circle" class="w-20 h-20 mx-auto text-accent-green mb-6 animate-popIn"></i><h1 class="text-4xl font-heading font-extrabold text-text-dark mb-4">Order Confirmed!</h1><p class="text-lg font-bold text-primary-gold mb-4">Order ID: ${orderId || 'N/A'}</p><p class="text-xl text-stone-700 mb-8">
+                                Thank you for your order! Your spices are now being prepared for shipping from Sri Lanka.
+                            </p><p class="text-md text-stone-600 mb-8">
+                                You will receive an email confirmation shortly.
+                            </p><a href="#shop" class="mt-6 inline-block px-8 py-3 bg-primary-orange text-white font-bold rounded-lg hover:bg-primary-gold transition duration-200 shadow-md">
+                                Continue Shopping
+                            </a></div></div>
+                `;
+                this.renderPage(html);
+            },
+
+            // 6. About Us Page
+            renderAbout() {
+                const html = `
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><h1 class="text-4xl font-heading font-extrabold text-center text-text-dark mb-4">Our Pure Taste of Tradition</h1><p class="text-center text-lg text-stone-600 mb-10">Crafted with care from Sri Lanka.</p><div class="max-w-4xl mx-auto space-y-16"><div class="bg-white p-10 rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-8 border border-primary-gold/20"><div class="md:w-1/2"><h2 class="text-3xl font-heading font-bold text-primary-orange mb-3 border-l-4 border-primary-orange pl-3">Sourced from the Heart of Sri Lanka</h2><p class="text-stone-700 leading-relaxed">
+                                        SpiceAura was founded on a simple principle: **purity**. Our journey began in the lush spice gardens of Kandy, Sri Lanka, where traditional farming methods have been passed down for generations. We bypass middlemen to work directly with small, ethical farms, ensuring fair wages and the highest quality, single-origin products.
+                                    </p></div><div class="md:w-1/2"><img src="https://placehold.co/600x400/D97706/ffffff?text=Traditional+Sourcing" alt="Sourcing Image" class="rounded-2xl shadow-xl"></div></div><div class="bg-white p-10 rounded-3xl shadow-xl flex flex-col md:flex-row-reverse items-center gap-8 border border-primary-gold/20"><div class="md:w-1/2"><h2 class="text-3xl font-heading font-bold text-primary-orange mb-3 border-l-4 border-primary-orange pl-3">Our Commitment: Freshness Guaranteed</h2><p class="text-stone-700 leading-relaxed">
+                                        Unlike mass-produced spices, ours are harvested, dried, and ground (if powdered) in small batches. This meticulous process preserves the essential oils and powerful aromatics, giving your food an unparalleled depth of flavor. We aim to bring the authentic, vibrant taste of Sri Lankan cuisine right to your kitchen.
+                                    </p><ul class="text-stone-700 mt-4 space-y-2"><li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-green"></i><span>100% Non-GMO & Organic Practices</span></li><li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-green"></i><span>Ethically Traded & Fair Prices</span></li><li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-green"></i><span>No Fillers, Additives, or Preservatives</span></li></ul></div><div class="md:w-1/2"><img src="https://placehold.co/600x400/059669/ffffff?text=Freshness+Commitment" alt="Quality Image" class="rounded-2xl shadow-xl"></div></div></div></div>
+                `;
+                this.renderPage(html);
+            },
+
+            // 7. Contact Page
+            renderContact() {
+                const html = `
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"><h1 class="text-4xl font-heading font-extrabold text-center text-text-dark mb-4">Get In Touch</h1><p class="text-center text-lg text-stone-600 mb-10">We're here to help you on your culinary journey.</p><div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8"><div class="bg-white p-8 rounded-2xl shadow-xl border border-stone-100"><h2 class="text-2xl font-heading font-bold text-text-dark mb-6">Send us a Message</h2><form onsubmit="event.preventDefault(); App.showToast('Thank you for your message! We will reply soon.'); this.reset();" class="space-y-4"><input type="text" placeholder="Your Name" required class="form-input"><input type="email" placeholder="Your Email" required class="form-input"><input type="text" placeholder="Subject" required class="form-input"><textarea placeholder="Your Message" rows="5" required class="form-input"></textarea><button type="submit" class="w-full py-3 bg-accent-green text-white font-bold rounded-lg hover:bg-primary-gold transition duration-300 shadow-md">
+                                        Submit Inquiry
+                                    </button></form></div><div class="space-y-6"><div class="bg-white p-6 rounded-xl shadow-xl border border-stone-100"><h2 class="text-2xl font-heading font-bold text-text-dark mb-4">Contact Details</h2><div class="space-y-3"><p class="flex items-center space-x-3 text-stone-700 font-semibold"><i data-lucide="mail" class="w-5 h-5 text-primary-orange"></i><span>hello@spiceaura.com</span></p><p class="flex items-center space-x-3 text-stone-700 font-semibold"><i data-lucide="phone" class="w-5 h-5 text-primary-orange"></i><span>+94 11 123 4567</span></p><p class="flex items-center space-x-3 text-stone-700 font-semibold"><i data-lucide="map-pin" class="w-5 h-5 text-primary-orange"></i><span>Spice Aura HQ, Colombo, Sri Lanka</span></p></div></div><div class="rounded-xl overflow-hidden shadow-xl border border-stone-200"><h3 class="text-lg font-heading font-semibold p-3 bg-stone-100 text-text-dark">Our Location (Mock)</h3><div class="aspect-video"><iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.672304918731!2d79.8612440751965!3d6.929853393072283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593f66c9c64b%3A0xc3f8f107c13e9a59!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full"></iframe></div></div></div></div></div>
+                `;
+                this.renderPage(html);
+            },
+
+            // --- EVENT HANDLERS SETUP ---
+            setupMobileMenu() {
+                this.mobileMenuButton.addEventListener('click', () => {
+                    this.mobileMenu.classList.toggle('hidden');
+                    this.mobileMenuButton.innerHTML = this.mobileMenu.classList.contains('hidden') ? '<i data-lucide="menu" class="w-6 h-6"></i>' : '<i data-lucide="x" class="w-6 h-6"></i>';
+                    this.renderIcons();
+                });
+
+                this.mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => this.mobileMenu.classList.add('hidden'));
+                });
+            },
+
+            setupSearchModal() {
+                const searchInput = document.getElementById('search-input');
+                const searchResults = document.getElementById('search-results');
+                const closeSearchModal = document.getElementById('close-search-modal');
+                const searchButton = document.getElementById('search-button');
+
+                const toggleSearchModal = (show) => {
+                    if (show) {
+                        this.searchModal.classList.remove('hidden');
+                        setTimeout(() => {
+                            this.searchModal.classList.add('opacity-100');
+                            this.searchModal.querySelector('div').classList.remove('scale-95');
+                            searchInput.focus();
+                        }, 10);
+                    } else {
+                        this.searchModal.classList.remove('opacity-100');
+                        this.searchModal.querySelector('div').classList.add('scale-95');
+                        setTimeout(() => this.searchModal.classList.add('hidden'), 300);
+                    }
+                };
+
+                searchButton.addEventListener('click', () => toggleSearchModal(true));
+                closeSearchModal.addEventListener('click', () => toggleSearchModal(false));
+                this.searchModal.addEventListener('click', (e) => {
+                    if (e.target === this.searchModal) toggleSearchModal(false);
+                });
+
+                const performSearch = (query) => {
+                    if (query.length < 2) {
+                        searchResults.innerHTML = '<p class="text-stone-500 text-sm p-2">Type at least 2 characters to search.</p>';
+                        return;
+                    }
+                    const results = App.PRODUCTS.filter(p =>
+                        p.name.toLowerCase().includes(query.toLowerCase()) ||
+                        p.description.toLowerCase().includes(query.toLowerCase())
+                    ).slice(0, 5);
+
+                    if (results.length === 0) {
+                        searchResults.innerHTML = '<p class="text-red-500 text-sm p-2">No results found.</p>';
+                    } else {
+                        searchResults.innerHTML = results.map(p => `
+                            <a href="#product-${p.id}" onclick="App.toggleSearchModal(false)" class="flex items-center space-x-3 p-3 hover:bg-stone-100 rounded-lg transition duration-150 border-b border-stone-200 last:border-b-0"><img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-cover rounded-md"><div><p class="font-semibold text-text-dark">${p.name}</p><p class="text-sm text-primary-gold font-bold">$${p.price.toFixed(2)}</p></div></a>
+                        `).join('');
+                        this.renderIcons();
+                    }
+                };
+
+                let searchTimeout;
+                searchInput.addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        performSearch(e.target.value.trim());
+                    }, 300);
+                });
+                this.toggleSearchModal = toggleSearchModal;
+            },
+
+            setupCartListeners() {
+                const cartList = document.getElementById('cart-items-list');
+                if (cartList) {
+                    cartList.addEventListener('click', (e) => {
+                        const target = e.target.closest('button[data-cart-action]');
+                        if (!target) return;
+
+                        const { productId, weight, cartAction } = target.dataset;
+                        const item = this.cart.find(i => i.id === productId && i.weight === weight);
+
+                        if (!item) return;
+
+                        let newQuantity = item.quantity;
+                        if (cartAction === 'increase') {
+                            newQuantity += 1;
+                        } else if (cartAction === 'decrease') {
+                            newQuantity -= 1;
+                        } else if (cartAction === 'remove') {
+                            newQuantity = 0;
+                        }
+
+                        this.updateQuantity(productId, newQuantity, weight);
+                    });
+                }
+            },
+
+            setupGlobalEventListeners() {
+                window.addEventListener('hashchange', this.router.bind(this));
+
+                document.body.addEventListener('click', (e) => {
+                    const target = e.target.closest('[data-action="add-to-cart"]');
+                    if (target) {
+                        e.preventDefault();
+                        this.addToCart(target.dataset.productId);
+                    }
+                });
+
+                this.setupMobileMenu();
+                this.setupSearchModal();
+            }
+        };
+
+        window.addEventListener('load', () => App.init());
+    </script><script>
+// Client-side API helpers (expects server at same origin)
+const API = {
+  async login(email, password) {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({email, password})
+    });
+    return res.json();
+  },
+  async registerAdmin(email, password) {
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({email, password})
+    });
+    return res.json();
+  },
+  async fetchProducts() {
+    const res = await fetch('/api/products');
+    return res.json();
+  },
+  async createCheckoutSession(items, customer) {
+    const res = await fetch('/create-checkout-session', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({items, customer})
+    });
+    return res.json();
+  }
+};
+
+// Stripe redirect helper (expects server to return {url})
+async function checkout(cart) {
+  if (!cart || cart.length===0) return alert('Cart empty');
+  document.getElementById('checkout-btn').innerText = 'Processing Payment...';
+  const items = cart.map(i=>({id:i.id, name:i.name, price:i.price, quantity:i.quantity}));
+  const resp = await API.createCheckoutSession(items, {email: localStorage.getItem('customerEmail') || ''});
+  if (resp && resp.url) {
+    window.location = resp.url;
+  } else {
+    alert('Failed to create checkout session: ' + (resp.error || 'unknown'));
+    document.getElementById('checkout-btn').innerText = 'Checkout';
+  }
+}
+
+// Admin login example: store JWT in localStorage
+async function adminLogin(email, password) {
+  const r = await API.login(email, password);
+  if (r && r.token) {
+    localStorage.setItem('adminToken', r.token);
+    alert('Logged in as admin');
+  } else {
+    alert('Login failed: ' + (r.error || 'unknown'));
+  }
+}
+
+// Simple product load to replace any inline product data
+async function loadProductsToUI(renderFn) {
+  const data = await API.fetchProducts();
+  if (data && Array.isArray(data.products)) {
+    renderFn(data.products);
+  }
+}
+
+// Expose API for inline scripts
+window.SpiceAPI = { checkout, adminLogin, loadProductsToUI, API };
+</script></body></html>
